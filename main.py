@@ -1,10 +1,12 @@
 
+# To practice:
+
+# -List comprehension
+
+# -Dictionary comprehension
+new_dict = {new_key:new_value for (key,value) in dict.items() if test}
 
 
-'''
-To practice:
-
--List comprehension
 
 # List/Dictionary comprehension
 import random
@@ -17,7 +19,6 @@ passed_students = {student:score for (student, score) in names_dict.items() if s
 sentence = "What is the Airspeed Velocity of an Unladen Swallow?"
 # sentence_list = sentence.split(' ')
 sentence_dict = {word:len(word) for word in sentence.split(' ')}
-
 
 
 weather_c = {
@@ -44,10 +45,7 @@ print([nato_dict[letter] for letter in word])
 
 
 
--Dictionary comprehension
-
-
-- *args
+# - *args
 def add(*args):
     sum = 0
     for i in args:
@@ -57,10 +55,27 @@ def add(*args):
 print(add(1,5,10,100))
 
 
-- **kwargs
+# - **kwargs
+def calculate(n, **kwargs):
+    print(kwargs)
+    for key, value in kwargs.items():
+        print(key)
+        print(value)
+    n += kwargs['add']
+    n *= kwargs['multiply']
+    print(n)
+
+
+calculate(2, add=3, multiply=5)
 
 
 
-'''
+class Car:
 
+    def __init__(self, **kwargs):
+        self.make = kwargs.get('make') #get won't give an error when one of kwargs not specified
+        self.model = kwargs.get('model')
 
+my_car = Car(make = 'nissan', model='micra')
+my_car = Car(make = 'nissan')
+print(my_car.model)
